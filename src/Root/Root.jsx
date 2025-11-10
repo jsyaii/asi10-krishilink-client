@@ -1,25 +1,25 @@
-
 import Navbar from '../components/Header/Navbar';
-import { Outlet } from 'react-router-dom';
 import Footer from '../components/Footer/Footer';
 
+import HomeLayouts from '../Layouts/HomeLayouts';
+import { Outlet } from 'react-router';
 
 
-const RootLayout = () => {
+
+const Root = () => {
     return (
-        <div>
+        
              <div className='w-11/12 mx-auto py-2 max-w-7xl '>
             <Navbar></Navbar>
 
 <main className='w-11/12 mx-auto py-2 max-w-7xl'>
 <Outlet></Outlet>
-
-
+<HomeLayouts></HomeLayouts>
 </main> 
             <Footer></Footer>
         </div>
-        </div>
+       
     );
 }
 
-export default RootLayout;
+export default Root;
