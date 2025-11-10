@@ -30,7 +30,7 @@ const LatestCrops = ({LatestCropsPromise}) => {
       <h2 className="font-bold text-4xl text-center mb-5">
         Recent <span className="text-primary">Crops</span>
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {crops.map((crop) => (
           <Crops key={crop._id} crop={crop} />
         ))}

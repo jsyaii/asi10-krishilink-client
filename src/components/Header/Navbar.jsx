@@ -24,6 +24,7 @@ const Navbar = () => {
         <h1 className="text-2xl font-bold">
           Krishi<span className="text-green-700">Link</span>
         </h1>
+
       </div>
       <ul className="flex gap-6 text-lg font-medium items-center">
         <li>
@@ -38,6 +39,7 @@ const Navbar = () => {
         </li>
 
         <li>
+      
           <NavLink
             to="/all-crops"
             className={({ isActive }) =>
