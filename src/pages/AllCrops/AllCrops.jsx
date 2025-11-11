@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router';
 
 const AllCrops = () => {
   const [crops, setCrops] = useState([]);
@@ -61,11 +62,21 @@ const AllCrops = () => {
                 />
                 <h2 className="text-xl font-semibold">{title || 'Untitled Crop'}</h2>
                 <p>Price: {price_min || 'N/A'} - {price_max || 'N/A'}</p>
-                <button
+                {/* <button
                   className="mt-4 bg-green-500 text-white py-2 rounded hover:bg-green-600 transition"
                 >
                   View Details
-                </button>
+                </button> */}
+                {/* <Link to={`/crops/${_id}`}>
+  <button className="mt-4 bg-green-500 text-white py-2 rounded hover:bg-green-600 transition">
+    View Details
+  </button>
+</Link> */}
+<Link to={`/crops/${_id}`}>
+  <button className="mt-4 bg-green-500 text-white py-2 rounded hover:bg-green-600 transition">
+    View Details
+  </button>
+</Link>
               </div>
             );
           })

@@ -5,6 +5,7 @@ import Root from '../Root/Root';
 import LogIn from '../pages/LogIn/LogIn';
 import Register from '../pages/Register/Register';
 import AllCrops from '../pages/AllCrops/AllCrops';
+import CropDetails from '../pages/CropDetails/CropDetails';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
         path: "/all-crops",
         element: <AllCrops />,
       },
+      {
+  path: "/crops/:id",
+  element: <CropDetails/>,
+}
     ],
   },
 ]);
