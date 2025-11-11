@@ -45,7 +45,20 @@ const SignUp = () => {
         alert(error.message);
       });
   };
+// 🌿 Google Login
+  const googleProvider = new GoogleAuthProvider();
 
+  const handleGoogleSignIn = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   
 
   return (
