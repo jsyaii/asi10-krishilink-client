@@ -10,7 +10,43 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { Link, useLocation, useNavigate } from "react-router";
 
 const SignUp = () => {
- 
+  const { createUser, setUser, updateUser } = useContext(AuthContext);
+  const [nameError, setNameError] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    if (name.length < 5) {
+      setNameError("Name should be more than 5 characters");
+      return;
+    } else {
+      setNameError("");
+    }
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        updateUser({ displayName: name, photoURL: photo })
+          .then(() => {
+            setUser({ ...user, displayName: name, photoURL: photo });
+            navigate(from, { replace: true });
+          })
+          .catch((error) => console.log(error));
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
+
+  
 
   return (
     <div className="flex justify-center min-h-screen items-center">
