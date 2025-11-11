@@ -127,6 +127,12 @@ const CropDetails = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-lg">
          
 {/* pp here */}
+<p><strong>Type:</strong> {crop.type}</p>
+          <p><strong>Price per Unit:</strong> {crop.pricePerUnit} / {crop.unit}</p>
+          <p><strong>Available Quantity:</strong> {crop.quantity}</p>
+          <p><strong>Location:</strong> {crop.location}</p>
+          <p className="sm:col-span-2"><strong>Description:</strong> {crop.description}</p>
+          <p className="sm:col-span-2"><strong>Owner:</strong> {crop.owner?.ownerName} ({crop.owner?.ownerEmail})</p>
           
         </div>
       </div>
