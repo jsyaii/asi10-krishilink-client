@@ -23,7 +23,14 @@ const Login = () => {
         <form onSubmit={handleLogin} className="card-body">
           <fieldset className="fieldset">
             {/* email  */}
-           
+           <label className="label">Email</label>
+            <input
+              name="email"
+              type="email"
+              className="input"
+              placeholder="Email"
+              required
+            />
             {/* passowrd  */}
             <label className="label">Password</label>
             <input
