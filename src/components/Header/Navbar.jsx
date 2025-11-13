@@ -1,20 +1,30 @@
-import React, { useContext } from "react";
+import React, { use, useContext } from "react";
 import { Link, NavLink } from "react-router";
-import { IoHome } from "react-icons/io5";
-import { PiPlantBold } from "react-icons/pi";
-import { FaPenToSquare, FaOpencart } from "react-icons/fa6";
 import { CiGrid42 } from "react-icons/ci";
+import { AuthContext } from "../../provider/AuthProvider";
 
-// Example user context or mock user
-// Replace with your actual AuthContext when ready
-// import { AuthContext } from "../context/AuthContext";
+
 
 const Navbar = () => {
-  // const { user, logOut } = useContext(AuthContext);
-  const user = null; // mock (change later)
+   const { user, logOut } = use(AuthContext);
+
+
+  const handleLogOut = () => {
+    console.log("user trying to LogOut");
+    logOut()
+      .then(() => {
+        alert("You Logged Out successfully");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
 
   return (
     <nav className="flex justify-between items-center py-4 px-8 bg-white shadow-md">
+      <div className="">{user && user.email}</div>
+     
       <div className="flex items-center gap-3">
         <img
           src="/src/assets/logo.jpg"
@@ -26,7 +36,7 @@ const Navbar = () => {
         </h1>
 
       </div>
-      <ul className="flex gap-6 text-lg font-medium items-center">
+      <ul className="flex gap-4 text-lg font-medium items-center border-gray-400">
         <li>
           <NavLink
             to="/"
@@ -34,7 +44,7 @@ const Navbar = () => {
               isActive ? "text-green-700 font-bold" : "hover:text-green-700"
             }
           >
-            <IoHome className="inline mr-1" /> Home
+            Home
           </NavLink>
         </li>
 
@@ -46,7 +56,7 @@ const Navbar = () => {
               isActive ? "text-green-700 font-bold" : "hover:text-green-700"
             }
           >
-            <PiPlantBold className="inline mr-1" /> All Crops
+           All Crops
           </NavLink>
         </li>
 
@@ -64,7 +74,7 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
-                to="/register"
+                to="/auth/register"
                 className={({ isActive }) =>
                   isActive ? "text-green-700 font-bold" : "hover:text-green-700"
                 }
@@ -92,7 +102,7 @@ const Navbar = () => {
                   isActive ? "text-green-700 font-bold" : "hover:text-green-700"
                 }
               >
-                <FaPenToSquare className="inline mr-1" /> Add Crops
+                Add Crops
               </NavLink>
             </li>
             <li>
@@ -102,7 +112,7 @@ const Navbar = () => {
                   isActive ? "text-green-700 font-bold" : "hover:text-green-700"
                 }
               >
-                <FaOpencart className="inline mr-1" /> My Posts
+               My Posts
               </NavLink>
             </li>
             <li>
@@ -129,12 +139,10 @@ const Navbar = () => {
               alt="User"
               className="w-10 h-10 rounded-full object-cover border"
             />
-            <button
-              onClick={() => alert("Log out function here")}
-              className="btn btn-sm bg-green-700 text-white hover:bg-green-800"
-            >
-              Logout
-            </button>
+
+           <button onClick={handleLogOut} className="btn  bg-green-700 px-10 ">
+            LogOut
+          </button>
           </>
         ) : (
           <Link
@@ -143,7 +151,8 @@ const Navbar = () => {
           >
             Login
           </Link>
-        )}
+        )
+        }
       </div>
     </nav>
   );
@@ -163,105 +172,3 @@ export default Navbar;
 
 
 
-
-// import React from 'react';
-// import { CiGrid42 } from 'react-icons/ci';
-// import { FaOpencart, FaPenToSquare } from 'react-icons/fa6';
-// import { IoHome } from 'react-icons/io5';
-// import { PiPlantBold } from 'react-icons/pi';
-// import { Link, NavLink } from 'react-router';
-
-
-// const Navbar = () => {
-
-
-//  const links = (
-//     <>
-//       <li>
-//         <NavLink to={"/"}>
-//           <IoHome />
-//           Home
-//         </NavLink>
-//       </li>
-//       <li>
-//         <NavLink to={"/"}>
-//           <PiPlantBold />
-//           All Crops
-//         </NavLink>
-//       </li>
-//       {/* {user && (
-//         <>
-//           <li>
-//             <NavLink to={"/"}>
-//               {" "}
-//               <FaPenToSquare />
-//               Add Crops
-//             </NavLink>
-//           </li>
-//           <li>
-//             <NavLink to={"/"}>
-//               <FaOpencart />
-//               My Posts
-//             </NavLink>
-//           </li>
-//           <li>
-//             <NavLink to={"/"}>
-//               <CiGrid42 />
-//               My interests
-//             </NavLink>
-//           </li>
-//         </>
-//       )} */}
-//     </>
-//   );
-
-
-
-
-
-
-
-//     return (
-//         <div className="flex justify-between items-center ">
-//       <div className="">{user && user.email}</div>
-//      <div className="h-[70px] flex items-center gap-3 font-bold">
-//   <img
-//     src="/src/assets/logo.jpg"
-//     alt="Logo"
-//     className="h-full w-auto object-contain"
-//   />
-//   <p>Green <span className="text-emerald-800">Nest</span></p>
-// </div>
-
-//       <div className="nav flex gap-5 text-accent">
-//         <NavLink to="/">Home</NavLink>
-//         <NavLink to="/allplants">Plants</NavLink>
-//         <NavLink to="/profile">My profile</NavLink>
-//       </div>
-//       <div className="login-btn flex gap-5">
-//         <img
-//           className="w-12 rounded-full"
-//           src="../src/assets/user.png"
-//           alt=""
-//         />
-//         {/* {user ? (
-//           <button onClick={handleLogOut} className="btn btn-primary px-10 ">
-//             LogOut
-//           </button>
-//         ) : (
-//           <Link to="/auth/login" className="btn btn-primary px-10 ">
-//             Login
-//           </Link>
-//         )} */}
-
-//         <Link to="/auth/login" className="btn btn-primary px-10 ">
-//             Login
-//           </Link>
-        
-        
-//       </div>
-//     </div>
-//     );
-// }
-
-// export default Navbar;

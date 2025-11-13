@@ -1,15 +1,12 @@
-
-
-
-
 import React, { useContext, useState } from "react";
-// import { Link, useNavigate, useLocation } from "react-router-dom";
-import { AuthContext } from "../../provider/AuthProvider";
+// import { AuthContext } from "../../provider/AuthProvider";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 // import { auth } from "../../firebase/firebase.config"; // your firebase config file
 import { Link, useLocation, useNavigate } from "react-router";
+import { AuthContext } from "../../provider/AuthProvider";
+import { auth } from "../../Firebase/firebase.config";
 
-const SignUp = () => {
+const Register = () => {
   const { createUser, setUser, updateUser } = useContext(AuthContext);
   const [nameError, setNameError] = useState("");
   const navigate = useNavigate();
@@ -130,7 +127,7 @@ const SignUp = () => {
             {/* Already have account */}
             <p className="font-semibold text-center pt-5">
               Already have an account?{" "}
-              <Link className="text-secondary" to="/auth/login">
+              <Link className="text-secondary" to="/login">
                 Login
               </Link>
             </p>
@@ -141,7 +138,7 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Register;
 
 
 

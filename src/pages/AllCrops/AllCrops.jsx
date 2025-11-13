@@ -8,7 +8,7 @@ const AllCrops = () => {
 
   // Fetch crops from backend
   useEffect(() => {
-    fetch('http://localhost:3000/crops')
+    fetch('https://krishilink-server-khaki.vercel.app/crops')
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -41,7 +41,7 @@ const AllCrops = () => {
         placeholder="Search crops..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="border border-gray-300 rounded p-2 mb-6 w-full"
+        className="border border-gray-300 rounded p-2 mb-6 w-2/8"
       />
 
       {/* Crop cards grid */}
@@ -62,16 +62,7 @@ const AllCrops = () => {
                 />
                 <h2 className="text-xl font-semibold">{title || 'Untitled Crop'}</h2>
                 <p>Price: {price_min || 'N/A'} - {price_max || 'N/A'}</p>
-                {/* <button
-                  className="mt-4 bg-green-500 text-white py-2 rounded hover:bg-green-600 transition"
-                >
-                  View Details
-                </button> */}
-                {/* <Link to={`/crops/${_id}`}>
-  <button className="mt-4 bg-green-500 text-white py-2 rounded hover:bg-green-600 transition">
-    View Details
-  </button>
-</Link> */}
+              
 <Link to={`/crops/${_id}`}>
   <button className="mt-4 bg-green-500 text-white py-2 rounded hover:bg-green-600 transition">
     View Details

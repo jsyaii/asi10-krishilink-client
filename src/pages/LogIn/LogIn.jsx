@@ -3,9 +3,11 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../provider/AuthProvider';
 
 
+
 const Login = () => {
  const [error, setError] = useState("");
   const { signIn } = use(AuthContext);
+//   const { signIn } = useContext(AuthContext); // ✅ Correct way
   const location = useLocation();
   const navigate = useNavigate();
   // console.log(location);
@@ -72,8 +74,8 @@ const Login = () => {
             </button>
             <p className="font-semibold text-center pt-5">
               Dont’t Have An Account ?{" "}
-              <Link className="text-secondary" to="/auth/signup">
-                Sign Up
+              <Link className="text-secondary" to="/auth/register">
+                Register
               </Link>
             </p>
           </fieldset>

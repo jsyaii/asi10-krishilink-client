@@ -6,7 +6,7 @@ const Crops = ({crop}) => {
     return (
 
         <div className="card w-full bg-base-100 shadow-sm  max-w-md mx-auto ">
-  <figure className="px-4 pt-4 w-full aspect-[4/3] overflow-hidden rounded-xl">
+  <figure className="px-4 pt-4 w-full aspect-4/3 overflow-hidden rounded-xl">
     <img src={image} alt={title} className="object-cover w-full h-full" />
   </figure>
   <div className="card-body">

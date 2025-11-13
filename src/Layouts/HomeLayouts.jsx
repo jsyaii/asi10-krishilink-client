@@ -6,10 +6,7 @@ import Blogs from '../pages/Blogs/Blogs';
 import PlantCareTips from '../pages/careTips/careTips';
 import GreenExperts from '../pages/GreenExperts/GreenExperts';
 
-
-
-
-const LatestCropsPromise = fetch('http://localhost:3000/latest-crops')
+const LatestCropsPromise = fetch('https://krishilink-server-khaki.vercel.app/latest-crops')
 .then(res => res.json());
 const HomeLayouts = () => {
     return (
